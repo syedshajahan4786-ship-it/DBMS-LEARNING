@@ -1,15 +1,263 @@
-/* The theme tokens (--background, --card, --brand, --canvas, --chart-1…5,
-   light and dark) are injected by @makoai/app-sdk, and the house base and kit
-   styles come from @makoai/app-sdk/ui.css (imported before this file).
-   Override a token here to re-theme; keep app layout below. */
+/* Vehicle EER Diagram Styles */
 
-.page {
+.app-container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 24px 16px 48px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: #263238;
 }
 
-.muted {
+.header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.header h1 {
+  font-size: 28px;
+  margin: 0 0 8px;
+  color: #1565c0;
+}
+
+.subtitle {
+  font-size: 16px;
+  color: #546e7a;
+  margin: 0 0 16px;
+}
+
+.controls {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.toggle-btn {
+  padding: 8px 16px;
+  border: 2px solid #1565c0;
+  background: #e3f2fd;
+  color: #1565c0;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.toggle-btn:hover {
+  background: #1565c0;
+  color: white;
+}
+
+.diagram-wrapper {
+  background: white;
+  border: 2px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 24px;
+  overflow-x: auto;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.diagram-wrapper svg {
+  display: block;
+  margin: 0 auto;
+}
+
+/* Legend */
+.legend {
+  background: #f5f5f5;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 24px;
+}
+
+.legend h3 {
+  margin: 0 0 16px;
+  font-size: 18px;
+  color: #37474f;
+}
+
+.legend-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 12px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 12px;
+  background: white;
+  border-radius: 6px;
+  border: 1px solid #e0e0e0;
+  font-size: 14px;
+}
+
+.legend-item svg {
+  flex-shrink: 0;
+}
+
+/* Task Answers */
+.answers {
+  margin-top: 32px;
+}
+
+.answers h2 {
+  font-size: 24px;
+  color: #1565c0;
+  margin: 0 0 20px;
+  text-align: center;
+}
+
+.task-card {
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 16px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+}
+
+.task-card h3 {
+  margin: 0 0 12px;
+  font-size: 17px;
+  color: #1565c0;
+  border-bottom: 2px solid #e3f2fd;
+  padding-bottom: 8px;
+}
+
+.task-card p {
   margin: 0;
-  color: var(--muted-foreground);
+  line-height: 1.7;
+  font-size: 15px;
+}
+
+.task-card ul {
+  margin: 0;
+  padding-left: 20px;
+  line-height: 1.8;
+}
+
+.task-card li {
+  margin-bottom: 4px;
+}
+
+.attr-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.attr-tag {
+  display: inline-block;
+  padding: 6px 14px;
+  background: #e3f2fd;
+  border: 1px solid #90caf9;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #1565c0;
+}
+
+.specialized-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.specialized-col {
+  padding: 16px;
+  border-radius: 8px;
+}
+
+.specialized-col h4 {
+  margin: 0 0 12px;
+  font-size: 16px;
+}
+
+.car-col {
+  background: #e8f5e9;
+  border: 1px solid #a5d6a7;
+}
+
+.car-col h4 { color: #2e7d32; }
+
+.truck-col {
+  background: #fff3e0;
+  border: 1px solid #ffcc80;
+}
+
+.truck-col h4 { color: #e65100; }
+
+.car-tag {
+  background: #c8e6c9 !important;
+  border-color: #66bb6a !important;
+  color: #2e7d32 !important;
+}
+
+.truck-tag {
+  background: #ffe0b2 !important;
+  border-color: #ffa726 !important;
+  color: #e65100 !important;
+}
+
+.specialized-col .attr-tag {
+  display: block;
+  margin-bottom: 6px;
+}
+
+.summary-table {
+  overflow-x: auto;
+}
+
+.summary-table table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.summary-table th {
+  background: #1565c0;
+  color: white;
+  padding: 10px 14px;
+  text-align: left;
+  font-weight: 600;
+}
+
+.summary-table td {
+  padding: 10px 14px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.summary-table tr:nth-child(even) td {
+  background: #f5f5f5;
+}
+
+.summary-table tr:hover td {
+  background: #e3f2fd;
+}
+
+footer {
+  text-align: center;
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid #e0e0e0;
+  color: #78909c;
+  font-size: 13px;
+}
+
+footer p {
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .specialized-grid {
+    grid-template-columns: 1fr;
+  }
+  .legend-grid {
+    grid-template-columns: 1fr;
+  }
 }
