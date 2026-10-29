@@ -1,0 +1,8 @@
+{
+  "id": "6ae2c00880e44ce54bf76bec",
+  "schemaVersion": 1,
+  "title": "Vehicle EER Diagram",
+  "description": "Interactive EER diagram showing Vehicle supertype with Car and Truck subtypes, specialization constraints (disjoint, total), inherited attributes, and primary keys.",
+  "entry": "src/main.tsx",
+  "bindings": []
+}
